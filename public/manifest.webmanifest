@@ -1,0 +1,23 @@
+{
+  "name": "The Dashing Owl",
+  "short_name": "Dashing Owl",
+  "theme_color": "#ff5874",
+  "background_color": "#c678dd",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "description": "Blog",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/images/logo.svg",
+      "sizes": "1024x1024",
+      "type": "image/svg"
+    },
+    {
+      "src": "/images/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
