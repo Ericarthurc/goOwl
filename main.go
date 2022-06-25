@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goOwl/routers"
 	"goOwl/utilities"
 	"net/http"
 
@@ -24,7 +25,7 @@ func main() {
 
 	e := echo.New()
 	e.HideBanner = true
-	e.HTTPErrorHandler = customHTTPErrorHandler
+	// e.HTTPErrorHandler = customHTTPErrorHandler
 	e.Renderer = utilities.T
 
 	e.Static("/public", "public")
@@ -32,11 +33,10 @@ func main() {
 	e.File("/robots.txt", "public/robots.txt")
 	e.File("/manifest.webmanifest", "public/manifest.webmanifest")
 
-	e.GET("/", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "index.html", map[string]any{
-			"Name": "Eric Christensen",
-		})
-	})
+	routers.BlogRouter(e)
+	routers.SeriesRouter(e)
+	routers.CategoryRouter(e)
+	routers.AboutRouter(e)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
