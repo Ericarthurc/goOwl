@@ -14,7 +14,7 @@ func BlogRouter(e *echo.Echo) {
 	blogs.GET("", func(c echo.Context) error {
 		dt := time.Now()
 		fmt.Println("Handler | " + dt.Format("01-02-2006 15:04:05"))
-		return c.String(http.StatusOK, "blogIndex")
+		return c.Render(http.StatusOK, "index.html", map[string]any{"Name": "Billy"})
 	}, middlewares.TestMiddle)
 	blogs.GET("blog", func(c echo.Context) error {
 		return c.String(http.StatusOK, "blogPost")
