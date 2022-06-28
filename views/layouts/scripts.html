@@ -1,0 +1,38 @@
+{{define "version"}}
+<script async>
+    console.log(`%cSite Version: 0.1.0`, 'color: #00d0ff');
+</script>
+{{end}}
+
+{{define "serviceWorker"}}
+<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("sw.js").then(function (reg) {
+            console.log("Service worker registered for scope: " + reg.scope);
+        });
+    }
+</script>
+{{end}}
+
+{{define "themeSwitcher"}}
+<script>
+    let theme = localStorage.getItem('theme');
+    let themeSwitcherInput = document.querySelector('#themeSwitch');
+    if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeSwitcherInput.checked = false;
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeSwitcherInput.checked = true;
+    }
+    themeSwitcherInput.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            localStorage.setItem('theme', 'dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    });
+</script>
+{{end}}

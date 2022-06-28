@@ -9,7 +9,7 @@ import (
 )
 
 func customHTTPErrorHandler(err error, c echo.Context) {
-	fmt.Println(err)
+	fmt.Printf("%s | %s\n", c.Path(), err)
 }
 
 func main() {
@@ -29,5 +29,5 @@ func main() {
 	routers.CategoryRouter(e)
 	routers.AboutRouter(e)
 
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":3000"))
 }
